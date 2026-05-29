@@ -1,6 +1,7 @@
 package com.ms.email.email;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.ms.email.email.dto.CertificadoEmail;
 import com.ms.email.email.dto.EventoEmail;
 import com.ms.email.email.dto.InscricaoEmail;
 import lombok.RequiredArgsConstructor;
@@ -42,5 +43,13 @@ public class EmailConsumer {
 
         log.info("Processando conclusão: {}", dto.destinatario());
         emailService.enviarEventoConcluido(dto);
+    }
+
+    @KafkaListener(topics = "email.certificado", groupId = "email-group")
+    public void consumirCertificados(String payload) throws JsonProcessingException {
+        CertificadoEmail dto = objectMapper.readValue(payload, CertificadoEmail.class);
+
+        log.info("Processando envio de certificado: {}", dto.destinatario());
+        emailService.enviarCertificados(dto);
     }
 }

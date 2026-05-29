@@ -1,5 +1,6 @@
 package com.ms.email.email;
 
+import com.ms.email.email.dto.CertificadoEmail;
 import com.ms.email.email.dto.EventoEmail;
 import com.ms.email.email.dto.InscricaoEmail;
 import lombok.RequiredArgsConstructor;
@@ -44,6 +45,17 @@ public class EmailService {
                 + "O evento \"" + dto.tema() + "\" foi concluído com sucesso. "
                 + "Agradecemos sua participação!\n\n"
                 + "Em breve seu certificado estará disponível.\n\n"
+                + "Equipe Muttley";
+
+        enviar(dto.destinatario(), assunto, corpo);
+    }
+
+    public void enviarCertificados(CertificadoEmail dto) {
+        String assunto = "Certificado — " + dto.tema();
+        String corpo = "Olá, " + dto.nome() + "!\n\n"
+                + "Segue o certificicado relacionado ao evento — " + dto.tema() + " realizado no dia " + dto.dataEvento()
+                + "Data de emissão: " + dto.dataEmissao()
+                + "Link para acesso: " + dto.url()
                 + "Equipe Muttley";
 
         enviar(dto.destinatario(), assunto, corpo);
