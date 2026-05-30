@@ -8,5 +8,6 @@ public record CertificadoEmail(
         String tema,
         String dataEvento,
         String dataEmissao,
-        String url
+        String baseUrl,
+        String urlCert
 ) {}
