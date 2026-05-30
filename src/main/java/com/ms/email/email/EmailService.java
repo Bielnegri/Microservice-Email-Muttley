@@ -53,9 +53,9 @@ public class EmailService {
     public void enviarCertificados(CertificadoEmail dto) {
         String assunto = "Certificado — " + dto.tema();
         String corpo = "Olá, " + dto.nome() + "!\n\n"
-                + "Segue o certificicado relacionado ao evento — " + dto.tema() + " realizado no dia " + dto.dataEvento()
-                + "Data de emissão: " + dto.dataEmissao()
-                + "Link para acesso: " + dto.baseUrl() + dto.urlCert()
+                + "Segue o certificicado relacionado ao evento — " + dto.tema() + " realizado no dia " + dto.dataEvento() +"\n\n"
+                + "Data de emissão: " + dto.dataEmissao() +"\n\n"
+                + "Link para acesso: " + dto.baseUrl() + dto.urlCert() +"\n\n"
                 + "Equipe Muttley";
 
         enviar(dto.destinatario(), assunto, corpo);
