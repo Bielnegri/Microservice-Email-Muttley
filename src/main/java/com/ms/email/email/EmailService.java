@@ -1,6 +1,7 @@
 package com.ms.email.email;
 
 import com.ms.email.email.dto.CertificadoEmail;
+import com.ms.email.email.dto.CredenciaisEmail;
 import com.ms.email.email.dto.EventoEmail;
 import com.ms.email.email.dto.InscricaoEmail;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,19 @@ public class EmailService {
                 + "Local: " + dto.local() + "\n\n"
                 + "Número de inscrição: " + dto.inscricao() + "\n\n"
                 + "Até lá!\n"
+                + "Equipe Muttley";
+
+        enviar(dto.destinatario(), assunto, corpo);
+    }
+
+    public void enviarCredenciaisLogin(CredenciaisEmail dto) {
+        String assunto = "Credenciais para login — " + dto.nome();
+        String corpo = "Olá, " + dto.nome() + "!\n\n"
+                + "Seguem abaixo suas credenciais para acessar o dashboard do sistema:\n\n"
+                + "User: " + dto.user() + "\n"
+                + "Senha: " + dto.senha() + "\n\n"
+                + "<i>AVISO: A senha apresentada foi gerada pelo sistema.</i>" + "\n"
+                + "É recomendado alterá-la para garantir sua segurança." + "\n\n"
                 + "Equipe Muttley";
 
         enviar(dto.destinatario(), assunto, corpo);
