@@ -32,11 +32,9 @@ public class EmailService {
     public void enviarCredenciaisLogin(CredenciaisEmail dto) {
         String assunto = "Credenciais para login — " + dto.nome();
         String corpo = "Olá, " + dto.nome() + "!\n\n"
-                + "Seguem abaixo suas credenciais para acessar o dashboard do sistema:\n\n"
-                + "User: " + dto.user() + "\n"
-                + "Senha: " + dto.senha() + "\n\n"
-                + "<i>AVISO: A senha apresentada foi gerada pelo sistema.</i>" + "\n"
-                + "É recomendado alterá-la para garantir sua segurança." + "\n\n"
+                + "Para acessar seu dashboard pessoal posteriomente, é necessário se cadastrar!\n\n"
+                + "Segue link para criação da sua conta:" + "\n"
+                + "Link: " + dto.baseUrl() + "/register?token=" + dto.token() +"\n\n"
                 + "Equipe Muttley";
 
         enviar(dto.destinatario(), assunto, corpo);
