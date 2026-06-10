@@ -1,8 +1,8 @@
 package com.ms.email.email.dto;
 
-public record CredenciaisEmail(
+public record CadastroEmail(
         String destinatario,
         String nome,
-        String token,
+        String id,
         String baseUrl
 ) {}
