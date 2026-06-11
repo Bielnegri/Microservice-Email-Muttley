@@ -21,7 +21,7 @@ public class EmailConsumer {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @KafkaListener(topics = "email.inscricao.confirmada", groupId = "email-group")
-    public void consumirConfirmacao(String payload) throws JsonProcessingException {
+    public void consumirConfirmacaoInscricao(String payload) throws JsonProcessingException {
         InscricaoEmail dto = objectMapper.readValue(payload, InscricaoEmail.class);
 
         log.info("Processando confirmação: {}", dto.destinatario());
